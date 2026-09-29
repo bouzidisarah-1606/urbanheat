@@ -1,0 +1,6 @@
+zone,latitude,longitude,risk_class,demo_score_1_to_10,status
+Central Brussels,50.8467,4.3525,Very high,9,Illustrative demo value
+European Quarter,50.8430,4.3810,High,8,Illustrative demo value
+Canal Zone,50.8560,4.3370,High,7,Illustrative demo value
+Anderlecht example area,50.8350,4.3000,Moderate,5,Illustrative demo value
+Large green-space example,50.8150,4.3800,Lower / cooling,2,Illustrative demo value

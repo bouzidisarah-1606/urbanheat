@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Smart City GIS Web Page: Urban Heat Risk in Brussels.">
+<title>Urban Heat Risk Web Page - Brussels</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div>
+    <p class="eyebrow">ENGINEER LAB · SMART CITY GIS WEB PAGE</p>
+    <h1>Urban Heat Risk in Brussels</h1>
+    <p class="subtitle">A remote-sensing and GIS prototype for identifying urban heat-risk hotspots and supporting cooling actions.</p>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Main navigation">
+  <a href="#problem">Problem</a><a href="#data">Data</a><a href="#method">Method</a>
+  <a href="#results">Results</a><a href="#feedback">Feedback</a>
+</nav>
+
+<main>
+<section id="problem" class="section">
+  <div class="section-heading"><span>01</span><h2>Problem</h2></div>
+  <p>Brussels experiences an <strong>urban heat-island effect</strong>: built-up areas can become warmer than less urbanised surroundings. Hard surfaces such as concrete and asphalt absorb heat, while limited vegetation and reduced air circulation can intensify heat.</p>
+  <p>The City of Brussels reports that temperatures can be up to <strong>10°C higher in certain neighbourhoods</strong> and describes cooling-island approaches based on vegetation, water, shade, suitable materials and better air circulation.</p>
+  <div class="callout"><strong>Target user:</strong> municipality, urban planner or city decision-maker.</div>
+  <figure><img src="images/brussels_heat_map.svg" alt="Illustrative GIS-style map of Brussels showing example urban heat-risk zones">
+  <figcaption>Illustrative prototype map. The zones are demo values for this student project, not an official Brussels heat-risk map.</figcaption></figure>
+</section>
+
+<section id="data" class="section alt">
+  <div class="section-heading"><span>02</span><h2>Data</h2></div>
+  <p>The project combines satellite observations with GIS layers.</p>
+  <div class="table-wrap"><table>
+    <caption>Datasets for the Brussels urban heat analysis</caption>
+    <thead><tr><th>Dataset</th><th>Variable / bands</th><th>Purpose</th><th>Spatial detail</th></tr></thead>
+    <tbody>
+      <tr><td>Landsat 8/9 Collection 2 Level-2</td><td>Surface Temperature</td><td>Estimate land-surface temperature (LST)</td><td>Thermal product</td></tr>
+      <tr><td>Sentinel-2</td><td>Red + NIR bands</td><td>Calculate NDVI and map vegetation</td><td>10 m key bands</td></tr>
+      <tr><td>Brussels GIS / open data</td><td>Parks, land use, buildings, roads</td><td>Describe urban structure and cooling resources</td><td>Vector layers</td></tr>
+      <tr><td>OpenStreetMap</td><td>Roads, buildings, amenities</td><td>Web-map context</td><td>Vector / web map</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>External data sources:</strong>
+    <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature" target="_blank" rel="noopener">USGS Landsat</a> ·
+    <a href="https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2" target="_blank" rel="noopener">ESA Sentinel-2</a> ·
+    <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a> ·
+    <a href="https://www.brussels.be/" target="_blank" rel="noopener">City of Brussels</a>
+  </p>
+</section>
+
+<section id="method" class="section">
+  <div class="section-heading"><span>03</span><h2>Method</h2></div>
+  <h3>GIS and remote-sensing workflow</h3>
+  <ol>
+    <li>Acquire cloud-screened Landsat and Sentinel-2 images for Brussels.</li>
+    <li>Pre-process imagery and clip it to the study area.</li>
+    <li>Use Landsat surface-temperature data to obtain LST.</li>
+    <li>Calculate <strong>NDVI</strong> from Sentinel-2 to represent vegetation.</li>
+    <li>Calculate a built-up indicator such as <strong>NDBI</strong> where appropriate.</li>
+    <li>Standardise the indicators and combine them into an urban heat-risk index.</li>
+    <li>Overlay the result with parks, roads, buildings and cooling resources.</li>
+    <li>Publish the final decision-support result on the web page.</li>
+  </ol>
+  <h3>Example decision logic</h3>
+  <ul>
+    <li><strong>High temperature + low vegetation:</strong> investigate trees, shade and green infrastructure.</li>
+    <li><strong>High built-up density:</strong> investigate cool materials, green roofs and shaded public areas.</li>
+    <li><strong>Existing green/cooling area:</strong> preserve and connect it to other cooling corridors.</li>
+    <li><strong>Reported hot spot:</strong> compare the observation with the GIS layer before planning an intervention.</li>
+  </ul>
+</section>
+
+<section id="results" class="section alt">
+  <div class="section-heading"><span>04</span><h2>Results</h2></div>
+  <p>The final decision map classifies areas into <strong>very high</strong>, <strong>high</strong>, <strong>moderate</strong> and <strong>lower/cooling</strong> risk.</p>
+  <div id="map" aria-label="Interactive prototype map of Brussels urban heat risk"></div>
+  <div class="legend"><span>● Very high</span><span>● High</span><span>● Moderate</span><span>● Lower / cooling</span></div>
+  <div class="callout"><strong>Important:</strong> map markers and scores are illustrative demo data. A scientific version must use processed Brussels satellite/GIS data and documented calculations.</div>
+  <h3>Decision-support idea</h3>
+  <p>A municipality could identify priority areas, inspect the factors behind the risk, compare existing cooling resources and collect observations from residents or field teams.</p>
+  <a class="button-link" href="https://www.brussels.be/urban-cool-islands" target="_blank" rel="noopener">View Brussels urban cooling-island information</a>
+</section>
+
+<section id="feedback" class="section">
+  <div class="section-heading"><span>05</span><h2>Feedback</h2></div>
+  <p>This form is the interaction component of the project. A citizen, municipal employee or field observer can report a perceived hot spot.</p>
+  <form id="feedbackForm">
+    <fieldset><legend>Observer information</legend>
+      <div class="form-grid">
+        <div><label for="name">Name</label><input type="text" id="name" name="name" required></div>
+        <div><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+        <div><label for="date">Observation date</label><input type="date" id="date" name="date" required></div>
+        <div><label for="heatScore">Perceived heat level (1–10)</label><input type="number" id="heatScore" name="heatScore" min="1" max="10" required></div>
+      </div>
+    </fieldset>
+    <fieldset><legend>Observation</legend>
+      <label for="riskType">Main risk type</label>
+      <select id="riskType" name="riskType" required>
+        <option value="">-- Choose one --</option>
+        <option>Urban heat</option><option>Lack of vegetation</option><option>Lack of shade</option>
+        <option>Heat-absorbing surfaces</option><option>Other</option>
+      </select>
+      <p><strong>What did you observe?</strong></p>
+      <div class="checkboxes">
+        <label><input type="checkbox" name="observations" value="hot-pavement"> Hot pavement</label>
+        <label><input type="checkbox" name="observations" value="few-trees"> Few trees / little vegetation</label>
+        <label><input type="checkbox" name="observations" value="no-shade"> Lack of shade</label>
+        <label><input type="checkbox" name="observations" value="dense-buildings"> Dense buildings</label>
+      </div>
+      <label for="location">Location / neighbourhood</label><input type="text" id="location" name="location" required>
+      <label for="comments">Comments</label><textarea id="comments" name="comments" rows="6"></textarea>
+    </fieldset>
+    <div class="form-buttons"><button type="submit">Submit observation</button><button type="reset" class="secondary">Reset</button></div>
+    <p id="formMessage" role="status" aria-live="polite"></p>
+  </form>
+</section>
+</main>
+
+<footer><strong>Smart City GIS Web Page — Brussels</strong><br>Engineer Lab · Urban Heat Risk · Remote Sensing + GIS</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

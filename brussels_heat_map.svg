@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#eef4f2"/>
+<text x="50" y="62" font-family="Arial" font-size="30" font-weight="bold" fill="#173f3b">Brussels — Urban Heat Risk Prototype</text>
+<text x="50" y="92" font-family="Arial" font-size="16" fill="#53625f">Illustrative GIS-style decision map • demo values only</text>
+<path d="M130 170 C230 120 390 125 520 155 C690 195 835 150 900 250 C930 310 885 430 760 470 C620 515 500 490 390 520 C250 555 130 475 105 350 C90 275 95 215 130 170Z" fill="#d8dfdc" stroke="#8da09a" stroke-width="3"/>
+<path d="M150 390 Q330 300 500 330 T860 245" fill="none" stroke="white" stroke-width="25"/>
+<path d="M280 150 Q350 270 450 330 T760 500" fill="none" stroke="white" stroke-width="22"/>
+<path d="M170 460 Q350 390 540 390 T850 370" fill="none" stroke="white" stroke-width="18"/>
+<ellipse cx="700" cy="410" rx="105" ry="65" fill="#8ab88d" stroke="#4e8b68" stroke-width="3"/>
+<ellipse cx="270" cy="265" rx="60" ry="42" fill="#8ab88d" stroke="#4e8b68" stroke-width="3"/>
+<circle cx="465" cy="320" r="76" fill="#8e2f2f" opacity=".78"/><circle cx="610" cy="275" r="66" fill="#d06c32" opacity=".78"/>
+<circle cx="330" cy="385" r="62" fill="#d06c32" opacity=".72"/><circle cx="540" cy="430" r="58" fill="#e0b23f" opacity=".72"/>
+<circle cx="700" cy="410" r="50" fill="#4e8b68" opacity=".72"/>
+<g font-family="Arial" fill="white" text-anchor="middle"><text x="465" y="313" font-size="18" font-weight="bold">VERY HIGH</text><text x="465" y="338" font-size="14">demo hotspot</text><text x="610" y="270" font-size="17" font-weight="bold">HIGH</text><text x="330" y="380" font-size="17" font-weight="bold">HIGH</text><text x="540" y="425" font-size="16" font-weight="bold">MODERATE</text><text x="700" y="405" font-size="15" font-weight="bold">LOWER</text></g>
+<rect x="55" y="505" width="330" height="85" rx="10" fill="white" stroke="#b8c8c3"/>
+<text x="75" y="530" font-family="Arial" font-size="15" font-weight="bold" fill="#173f3b">Risk legend</text>
+<circle cx="88" cy="555" r="8" fill="#8e2f2f"/><text x="105" y="560" font-family="Arial" font-size="13">Very high</text>
+<circle cx="180" cy="555" r="8" fill="#d06c32"/><text x="197" y="560" font-family="Arial" font-size="13">High</text>
+<circle cx="250" cy="555" r="8" fill="#e0b23f"/><text x="267" y="560" font-family="Arial" font-size="13">Moderate</text>
+</svg>
